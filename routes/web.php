@@ -21,4 +21,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get("/dresseur/{dresseur_id}",[\App\Http\Controllers\DresseurController::class,"get"])->middleware(['auth'])->name("show_user");
+
 require __DIR__.'/auth.php';
