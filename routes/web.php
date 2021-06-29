@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Battle;
+use App\Models\BattlePokemon;
+use App\Models\Pokemon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +31,22 @@ Route::get("/dresseur/{dresseur_id}",[\App\Http\Controllers\DresseurController::
 Route::get("/dresseur/{dresseur_id}/add", [\App\Http\Controllers\DresseurController::class,"addPokemon"])
     ->middleware(['auth'])
     ->name("add_pokemon_to_user");
+
+Route::get('/battles', function () {
+    echo '<h2>Pokemons : </h2>';
+    echo '<br>';
+    echo '<h2>Battles : </h2>';
+    $battles = Battle::all();
+    foreach ($battles as $battle) {
+        echo '<fieldset>';
+        echo '<h3>Battle '.$battle->id.' at '.$battle->date.': </h3><br>';
+        foreach ($battle->pokemons as $pokemonInBattle) {
+            echo $pokemonInBattle->id;
+            echo '<li>Pokemon: '.$pokemonInBattle->pokemons_id . '</li>';
+        }
+        echo '</fieldset><br>';
+    }
+    echo '<br>';
+});
+
 require __DIR__.'/auth.php';
