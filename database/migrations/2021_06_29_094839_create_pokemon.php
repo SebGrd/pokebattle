@@ -15,8 +15,11 @@ class CreatePokemon extends Migration
     {
         Schema::create('pokemon', function (Blueprint $table) {
             $table->id();
+            $table->unsignedSmallInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("user")->onDelete("cascade");
             $table->unsignedInteger("pokemons_id");
             $table->foreign("pokemons_id")->references('id')->on("pokemons")->onDelete('cascade');
+            $table->string("name")->nullable(false);
             $table->unsignedSmallInteger("hp")->default(0)->nullable(false);
             $table->unsignedSmallInteger("attack")->default(0)->nullable(false);
             $table->unsignedSmallInteger("defense")->default(0)->nullable(false);

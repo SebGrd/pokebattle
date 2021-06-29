@@ -21,6 +21,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get("/dresseur/{dresseur_id}",[\App\Http\Controllers\DresseurController::class,"get"])->middleware(['auth'])->name("show_user");
+Route::get("/dresseur/{dresseur_id}",[\App\Http\Controllers\DresseurController::class,"get"])
+    ->middleware(['auth'])
+    ->name("show_user");
 
+Route::get("/dresseur/{dresseur_id}/add", [\App\Http\Controllers\DresseurController::class,"addPokemon"])
+    ->middleware(['auth'])
+    ->name("add_pokemon_to_user");
 require __DIR__.'/auth.php';
