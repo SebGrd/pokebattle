@@ -12,11 +12,14 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('battles')" :active="request()->routeIs('battles')">
+                        {{ __('Battles') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('show_user')" :active="request()->routeIs('show_user')">
                         {{ __('Profil') }}
                     </x-nav-link>
                     <x-nav-link :href="route('add_pokemon_to_user')" :active="request()->routeIs('add_pokemon_to_user')">
-                        {{ __('ajout pokemon') }}
+                        {{ __('Ajout pokemon') }}
                     </x-nav-link>
                 </div>
             </div>
