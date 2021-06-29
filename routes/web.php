@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Battle;
+use App\Models\BattlePokemon;
+use App\Models\Pokemon;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,25 +20,37 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get("/dresseur",[\App\Http\Controllers\DresseurController::class,"get"])
+Route::get("/dresseur/{dresseur_id}",[\App\Http\Controllers\DresseurController::class,"get"])
     ->middleware(['auth'])
     ->name("show_user");
 
-Route::get("/dresseur/add", [\App\Http\Controllers\DresseurController::class,"addPokemon"])
+Route::get("/dresseur/{dresseur_id}/add", [\App\Http\Controllers\DresseurController::class,"addPokemon"])
     ->middleware(['auth'])
     ->name("add_pokemon_to_user");
 
-Route::post("/dresseur/add",[\App\Http\Controllers\DresseurController::class,"add"])
-    ->middleware(['auth'])
-    ->name("pokemon_add") ;
+Route::get('/battles', [\App\Http\Controllers\BattlesController::class,"get"] );
 
-Route::get("/dresseur/delete/{pokemon_id}",[\App\Http\Controllers\DresseurController::class,'deletePokemon'])
-    ->middleware(['auth'])
-    ->name('pokemon_delete') ;
 
-Route::get("/dresseur/update/{pokemon_id}",[\App\Http\Controllers\DresseurController::class,'updatePokemon'])
-    ->middleware(['auth'])
-    ->name('pokemon_update') ;
-
+//function () {
+//    echo '<h2>Pokemons : </h2>';
+//    echo '<br>';
+//    echo '<h2>Battles : </h2>';
+//    $battles = Battle::all();
+//    foreach ($battles as $battle) {
+//        echo '<fieldset>';
+//        echo '<h3>Battle '.$battle->id.' at '.$battle->date.': </h3><br>';
+//        foreach ($battle->pokemons as $pokemonInBattle) {
+//            echo $pokemonInBattle->id;
+//            echo '<li>Pokemon: '.$pokemonInBattle->pokemons_id . '</li>';
+//        }
+//        echo '</fieldset><br>';
+//    }
+//    echo '<br>';
+//    return view('battles');
+//
+//}
 require __DIR__.'/auth.php';
