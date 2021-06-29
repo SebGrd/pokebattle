@@ -38,4 +38,8 @@ Route::get("/dresseur/update/{pokemon_id}",[\App\Http\Controllers\DresseurContro
     ->middleware(['auth'])
     ->name('pokemon_update') ;
 
+Route::post("/dresseur/update/{pokemon_id}",[\App\Http\Controllers\DresseurController::class,'pokemonUpdate'])
+    ->middleware(['auth'])
+    ->name('pokemon_update_post') ;
+
 require __DIR__.'/auth.php';

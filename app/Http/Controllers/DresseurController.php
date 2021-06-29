@@ -75,4 +75,24 @@ class DresseurController extends Controller
             'pokemon'=>$pokemon
         ]);
     }
+
+    public function pokemonUpdate(Request $request){
+
+        $this->validate($request,[
+            "hp"=>"required",
+            "attack"=>"required",
+            "defense"=>"required",
+            "speed"=>"required"
+        ]);
+
+        $pokemon = Pokemon::find($request->pokemon_id) ;
+        $pokemon->hp = $request->hp ;
+        $pokemon->attack = $request->attack ;
+        $pokemon->defense = $request->defense ;
+        $pokemon->speed = $request->speed ;
+
+        $pokemon->save() ;
+
+        return redirect("dresseur") ;
+    }
 }

@@ -10,9 +10,10 @@
             @include('flash-message')
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 flex-1 bg-white border-b border-gray-200">
-                    {!! Form::open(['route'=> 'pokemon_add']) !!}
+                    {!! Form::open(['route'=> ['pokemon_update_post',$pokemon->id] ]) !!}
 
                     <h1 class="text-2xl"> {!! Form::label("Select pokemons stats (10 points) : ") !!} </h1>
+                    <img src="{{$pokemon->pokemon_type->image}}" alt="">
                     <div>
                         <div class="flex">
                             <b> {!! Form::label('Healing Points :*') !!} </b>
