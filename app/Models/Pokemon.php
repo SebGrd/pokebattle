@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Pokemon extends Model
 {
     use HasFactory;
+
+    public function pokemon_type(){
+        return $this->belongsTo(Pokemons::class,'pokemons_id');
+    }
     protected $table = 'pokemon';
 
     public function battles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
