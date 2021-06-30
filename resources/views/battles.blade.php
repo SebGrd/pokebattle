@@ -10,6 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h2>Battles</h2>
+                    <a href="/battles/new" class="text-green-700">Create a battle</a>
                     @foreach ($battles as $battle)
                         <h3 class="font-bold">Battle #{{$battle->id}} at {{$battle->date}}</h3>
                         <ul>

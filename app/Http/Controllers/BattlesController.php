@@ -16,8 +16,11 @@ class BattlesController extends Controller
         ]);
     }
 
-    public function addPokemon(Request $request)
+    public function post(Request $request)
     {
-
+        $battles = Battle::all();
+        return view('battle-add', [
+            'battles' => $battles,
+        ]);
     }
 }

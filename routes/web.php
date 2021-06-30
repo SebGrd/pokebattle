@@ -46,4 +46,8 @@ Route::get('/battles', [\App\Http\Controllers\BattlesController::class,"get"] )
 ->middleware(['auth'])
 ->name('battles');
 
+Route::get('/battles/new', [\App\Http\Controllers\BattlesController::class,"post"] )
+    ->middleware(['auth'])
+    ->name('battle-add');
+
 require __DIR__.'/auth.php';
