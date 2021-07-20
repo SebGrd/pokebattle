@@ -14,7 +14,7 @@
                         <a href="/battles/new" class="text-white bg-green-700 rounded p-1 hover:bg-green-600">Create a battle</a>
                     </div>
                     @foreach ($battles as $battle)
-                       <div class="border rounded p-4">
+                       <div class="border rounded p-4 mb-3">
                            <h3>#{{$battle->id}} Battle at {{$battle->date}}</h3>
                            <ul class="flex justify-center">
                                @foreach($battle->pokemons as $pokemonInBattle)

@@ -43,6 +43,10 @@ Route::post("/dresseur/update/{pokemon_id}",[\App\Http\Controllers\DresseurContr
     ->middleware(['auth'])
     ->name('pokemon_update_post') ;
 
+Route::get('/users/{user_id}/pokemons/', [\App\Http\Controllers\UserController::class, 'getPokemons'])
+    ->middleware(['auth'])
+    ->name('user-pokemons');
+
 Route::get('/battles', [\App\Http\Controllers\BattlesController::class,"get"] )
 ->middleware(['auth'])
 ->name('battles');

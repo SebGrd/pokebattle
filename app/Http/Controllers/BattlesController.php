@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Battle;
+use App\Models\BattlePokemon;
 use App\Models\Pokemon;
 use App\Models\User;
+use Carbon\Traits\Date;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,9 +33,28 @@ class BattlesController extends Controller
 
     public function post(Request $request)
     {
-        $battles = Battle::all();
-        return view('battle-add', [
-            'battles' => $battles,
+         $this->validate($request,[
+            "pokemonId"=>"required",
+            "enemy"=>"required",
+            "enemyPokemon"=>"required",
         ]);
+
+        if ($request->enemy === 'default') redirect()->route('battle-add');
+
+        $battle = new Battle();
+        $battle->date = date("Y-m-d");
+        $battle->save();
+        // your pokemon
+        $battlePokmon = new BattlePokemon();
+        $battlePokmon->pokemon_id = $request->pokemonId;
+        $battlePokmon->battle_id = $battle->id;
+        $battlePokmon->save();
+        // Enemy pokemon
+        $battlePokmon = new BattlePokemon();
+        $battlePokmon->pokemon_id = $request->enemyPokemon;
+        $battlePokmon->battle_id = $battle->id;
+        $battlePokmon->save();
+
+        redirect()->route('battles');
     }
 }
