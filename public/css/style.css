@@ -1,0 +1,29 @@
+.skills-list .label{
+    display: inline-block;
+    width: 80px;
+    font-weight: 600;
+}
+.points{
+    color: #de0707;
+}
+.points:after{
+    line-height: .3rem;
+}
+.points[points='0']:after{
+    content: 'None';
+}
+.points[points='1']:after{
+    content: '█';
+}
+.points[points='2']:after{
+    content: '█ █';
+}
+.points[points='3']:after{
+    content: '█ █ █';
+}
+.points[points='4']:after{
+    content: '█ █ █ █';
+}
+.points[points='5']:after{
+    content: '█ █ █ █ █';
+}

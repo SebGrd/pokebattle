@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,8 +47,16 @@ Route::get('/battles', [\App\Http\Controllers\BattlesController::class,"get"] )
 ->middleware(['auth'])
 ->name('battles');
 
-Route::get('/battles/new', [\App\Http\Controllers\BattlesController::class,"post"] )
+Route::get('/battles/new', [\App\Http\Controllers\BattlesController::class,"get"] )
     ->middleware(['auth'])
     ->name('battle-add');
+
+Route::post('/battles/new', [\App\Http\Controllers\BattlesController::class,"post"] )
+    ->middleware(['auth'])
+    ->name('battle-add');
+
+Route::get('/images/pokemon-{id}.png', function (Request $request) {
+    return redirect("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{$request->id}.png");
+});
 
 require __DIR__.'/auth.php';

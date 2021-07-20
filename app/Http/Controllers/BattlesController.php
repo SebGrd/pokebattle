@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Battle;
 use App\Models\Pokemon;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BattlesController extends Controller
 {
     public function get(Request $request)
     {
-        $battles = Battle::all();
-        return view('battles', [
-            'battles' => $battles,
+        $names = array_map(function ($user) { return $user['name']; }, User::all('name')->toArray());
+        $ids = array_map(function ($user) { return $user['id']; }, User::all('id')->toArray());
+        $users = array_combine($ids, $names);
+        return view('battle-add', [
+            'userPokemons' => Pokemon::where("user_id",Auth::id())->get(),
+            'users' => $users,
         ]);
     }
 
