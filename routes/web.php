@@ -47,7 +47,7 @@ Route::get('/battles', [\App\Http\Controllers\BattlesController::class,"get"] )
 ->middleware(['auth'])
 ->name('battles');
 
-Route::get('/battles/new', [\App\Http\Controllers\BattlesController::class,"get"] )
+Route::get('/battles/new', [\App\Http\Controllers\BattlesController::class,"add"] )
     ->middleware(['auth'])
     ->name('battle-add');
 

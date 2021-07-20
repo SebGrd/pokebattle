@@ -13,11 +13,15 @@
                     <a href="/battles/new" class="text-green-700">Create a battle</a>
                     @foreach ($battles as $battle)
                         <h3 class="font-bold">Battle #{{$battle->id}} at {{$battle->date}}</h3>
+                    {{-- var_dump($battle->pokemons) --}}
                         <ul>
+{{--                            @foreach(\App\Models\BattlePokemon::where('battle_id', $battle->id)->get() as $battlePokemon) --}}
+{{--                                {{ var_dump($battlePokemon->pokemon_id) }} --}}
+{{--                            @endforeach --}}
                             @foreach($battle->pokemons as $pokemonInBattle)
                                 <li>
-                                    <span>Pokemon: {{ \App\Models\Pokemon::find($pokemonInBattle->id)->name  }}</span>
-                                    <img src="{{ \App\Models\Pokemon::find($pokemonInBattle->id)->pokemon_type->image }}" alt="">
+                                    <span>Pokemon: {{ $pokemonInBattle->name  }}</span>
+                                    <img src="{{ $pokemonInBattle->pokemon_type->image }}" alt="">
                                 </li>
                             @endforeach
                         </ul>

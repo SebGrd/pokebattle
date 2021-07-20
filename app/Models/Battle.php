@@ -12,6 +12,6 @@ class Battle extends Model
 
     public function pokemons(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Pokemon::class, 'battle_pokemon','pokemon_id', 'battle_id');
+        return $this->belongsToMany(Pokemon::class, 'battle_pokemon','battle_id', 'pokemon_id');
     }
 }
