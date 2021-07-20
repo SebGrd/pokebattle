@@ -9,10 +9,16 @@ class Pokemon extends Model
 {
     use HasFactory;
 
+    protected $table = 'pokemon';
+
+
     public function pokemon_type(){
         return $this->belongsTo(Pokemons::class,'pokemons_id');
     }
-    protected $table = 'pokemon';
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
     public function battles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
