@@ -27,3 +27,27 @@
 .points[points='5']:after{
     content: '█ █ █ █ █';
 }
+
+.fight{
+    position: relative;
+}
+.fight__animation{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(2);
+}
+
+.progress-bar{
+    width: 100%;
+    height: 30px;
+    border: #718096;
+    border-radius: 4px;
+}
+
+.progress-bar__bar{
+    background: #de0707;
+    width: 100%;
+    height: 30px;
+    border-radius: 4px;
+}

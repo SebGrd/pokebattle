@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call([PokemonSeeder::class]);
         $this->call([UserSeeder::class]);
         $this->call([BattlesSeeder::class]);
+        $this->call([ResultSeeder::class]);
     }
 }

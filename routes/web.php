@@ -55,9 +55,17 @@ Route::get('/battles/new', [\App\Http\Controllers\BattlesController::class,"add"
     ->middleware(['auth'])
     ->name('battle-add');
 
+Route::get('/battles/history', [\App\Http\Controllers\BattlesController::class,"history"] )
+    ->middleware(['auth'])
+    ->name('battles-history');
+
 Route::post('/battles/new', [\App\Http\Controllers\BattlesController::class,"post"] )
     ->middleware(['auth'])
     ->name('battle-add');
+
+Route::get('/battles/fight/{battle_id}', [\App\Http\Controllers\BattlesController::class, "fight"])
+    ->middleware(['auth'])
+    ->name('fight');
 
 Route::get('/images/pokemon-{id}.png', function (Request $request) {
     return redirect("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{$request->id}.png");

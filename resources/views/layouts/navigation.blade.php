@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('battles')" :active="request()->routeIs('battles')">
                         {{ __('Battles') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('battles-history')" :active="request()->routeIs('battles-history')">
+                        {{ __('Historique des battles') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('show_user')" :active="request()->routeIs('show_user')">
                         {{ __('Profil') }}
                     </x-nav-link>
